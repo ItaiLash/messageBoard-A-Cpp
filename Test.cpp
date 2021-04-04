@@ -16,7 +16,7 @@ TEST_CASE("Read empty board")
     CHECK(board.read(0, 0, Direction::Horizontal, 2) == string("__"));
     CHECK(board.read(0, 0, Direction::Vertical, 1) == string("_"));
     CHECK(board.read(0, 0, Direction::Vertical, 2) == string("__"));
-    CHECK(board.read(12, 50, Direction::Vertical, 3) == string("_____"));
+    CHECK(board.read(12, 50, Direction::Vertical, 3) == string("___"));
     CHECK(board.read(32, 74, Direction::Horizontal, 4) == string("____"));
 }
 
@@ -35,7 +35,7 @@ TEST_CASE("Read word where length=0")
 TEST_CASE("Horizontal post")
 {
     Board board1;
-    board.post(2, 2, Direction::Horizontal, "Message Box");
+    board1.post(2, 2, Direction::Horizontal, "Message Box");
 
     CHECK(board1.read(2, 12, Direction::Horizontal, 1) == string("x"));
     CHECK(board1.read(1, 0, Direction::Horizontal, 2) == string("__"));
@@ -53,7 +53,7 @@ TEST_CASE("Horizontal post")
 TEST_CASE("Vertical post")
 {
     Board board2;
-    board.post(2, 2, Direction::Vertical, "Board");
+    board2.post(2, 2, Direction::Vertical, "Board");
 
     CHECK(board2.read(2, 12, Direction::Horizontal, 1) == string("_"));
     CHECK(board2.read(1, 0, Direction::Horizontal, 2) == string("__"));
@@ -91,6 +91,8 @@ TEST_CASE("Mix posts")
     CHECK(board.read(6, 6, Direction::Vertical, 3) == string("stp"));
     CHECK(board.read(0, 11, Direction::Vertical, 4) == string("_a_V"));
     CHECK(board.read(7, 3, Direction::Vertical, 5) == string("_Cpp_"));
+
+    board.show();
 }
 
 
